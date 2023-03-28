@@ -5,6 +5,8 @@
     <title>All About Me</title>
 </head>
 <body>
+{% extends 'base.html' %}
+    {% block content %}
     <!-- This is where I put my headings-->
     <H1>All About Andrew</H1>
     <H2>This is me</H2>
@@ -57,5 +59,6 @@
     <br>
     <a href="https://elms.umd.edu"><img src="https://terpconnect.umd.edu/~jbono/bmgt407/images/smith-logo.png"
     width="267" height="72" alt="UMD Smith Logo"></a>
+{% endblock %}
 </body>
 </html>
