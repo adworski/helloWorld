@@ -87,7 +87,14 @@
     {% endif %}
   </div>
   {% endif %}
-
+  <div class="col-md-6">
+    <label for="email" class="form-label"><strong>Email</strong></label>
+    {% if action and action in ['create', 'update'] %}
+    <input type="email" class="form-control" id="email" name="email" maxlength="100" value="{{ student['email'] if student else '' }}" required>
+    {% else %}
+        <br>{{ student['email'] }}
+    {% endif %}
+  </div>
   <div class="col-12">
         {% if action and action in ['create', 'update'] %}
     <div class="form-check">
@@ -120,5 +127,3 @@
   </div>
 </form>
 {% endblock %}
-
-
