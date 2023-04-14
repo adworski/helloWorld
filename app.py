@@ -15,8 +15,9 @@ app.config['SECRET_KEY'] = 'beyond_course_scope'
 db.init_app(app)
 
 login_manager = LoginManager()
-login_manager.login_view = 'login' # default login route
+login_manager.login_view = 'login'  # default login route
 login_manager.init_app(app)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -58,7 +59,8 @@ def login():
             if current_user.role in ['MANAGER', 'ADMIN']:
                 return redirect(redirect_route if redirect_route else url_for(default_route_function))
             elif current_user.role == 'STUDENT':
-                return redirect(redirect_route if redirect_route else url_for(default_student_route_function, student_id=0))
+                return redirect(
+                    redirect_route if redirect_route else url_for(default_student_route_function, student_id=0))
         else:
             flash(f'Your login information was not correct. Please try again.', 'error')
 
@@ -214,7 +216,6 @@ def training():
     return render_template('training.html')
 
 
-
 @app.route('/error')
 def error():
     # Generic error handler to handle various site errors
@@ -224,14 +225,11 @@ def error():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    flash(f'Sorry! You are trying to access a page that does not exist. Please contact support if this problem persists.', 'error')
+    flash(
+        f'Sorry! You are trying to access a page that does not exist. Please contact support if this problem persists.',
+        'error')
     return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
